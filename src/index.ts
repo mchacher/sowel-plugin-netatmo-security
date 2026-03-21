@@ -430,7 +430,7 @@ class NetatmoSecurityPlugin implements IntegrationPlugin {
   private async fetchHomeId(): Promise<string> {
     const token = await this.ensureToken();
 
-    const res = await this.fetchWithTimeout(`${NETATMO_BASE_URL}/api/homesdata`, {
+    const res = await this.fetchWithTimeout(`${NETATMO_BASE_URL}/api/homesdata?gateway_types=NACamera&gateway_types=NOC&gateway_types=NDB&gateway_types=NPC`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -438,7 +438,7 @@ class NetatmoSecurityPlugin implements IntegrationPlugin {
     if (res.status === 401) {
       // Token expired, retry once
       const freshToken = await this.retryWithFreshToken();
-      const retryRes = await this.fetchWithTimeout(`${NETATMO_BASE_URL}/api/homesdata`, {
+      const retryRes = await this.fetchWithTimeout(`${NETATMO_BASE_URL}/api/homesdata?gateway_types=NACamera&gateway_types=NOC&gateway_types=NDB&gateway_types=NPC`, {
         method: "GET",
         headers: { Authorization: `Bearer ${freshToken}` },
       });
