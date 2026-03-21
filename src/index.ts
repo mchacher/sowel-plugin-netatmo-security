@@ -262,8 +262,9 @@ class NetatmoSecurityPlugin implements IntegrationPlugin {
       return;
     }
 
-    const pollingIntervalSec = parseInt(this.getSetting("polling_interval") ?? "300", 10);
-    this.pollIntervalMs = (isNaN(pollingIntervalSec) ? 300 : pollingIntervalSec) * 1000;
+    const rawInterval = parseInt(this.getSetting("polling_interval") ?? "300", 10);
+    const pollingIntervalSec = Math.max(180, isNaN(rawInterval) ? 300 : rawInterval);
+    this.pollIntervalMs = pollingIntervalSec * 1000;
 
     try {
       // Step 1: Authenticate (get access token)
