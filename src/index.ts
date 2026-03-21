@@ -26,7 +26,7 @@ interface EventBus {
 }
 
 interface SettingsManager {
-  get(key: string): string | null;
+  get(key: string): string | undefined;
   set(key: string, value: string): void;
 }
 
@@ -213,9 +213,9 @@ class NetatmoSecurityPlugin implements IntegrationPlugin {
 
   isConfigured(): boolean {
     return (
-      this.getSetting("client_id") !== null &&
-      this.getSetting("client_secret") !== null &&
-      this.getSetting("refresh_token") !== null
+      !!this.getSetting("client_id") &&
+      !!this.getSetting("client_secret") &&
+      !!this.getSetting("refresh_token")
     );
   }
 
@@ -674,7 +674,7 @@ class NetatmoSecurityPlugin implements IntegrationPlugin {
     }
   }
 
-  private getSetting(key: string): string | null {
+  private getSetting(key: string): string | undefined {
     return this.settingsManager.get(`${SETTINGS_PREFIX}${key}`);
   }
 
