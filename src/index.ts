@@ -338,8 +338,7 @@ class NetatmoSecurityPlugin implements IntegrationPlugin {
   }
 
   getPollingInfo(): { lastPollAt: string; intervalMs: number } | null {
-    if (!this.lastPollAt) return null;
-    return { lastPollAt: this.lastPollAt, intervalMs: this.pollIntervalMs };
+    return { lastPollAt: this.lastPollAt ?? "", intervalMs: this.pollIntervalMs };
   }
 
   // ============================================================
