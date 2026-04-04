@@ -1,16 +1,41 @@
 {
   "id": "netatmo-security",
+  "type": "integration",
   "name": "Netatmo Security",
-  "version": "0.4.0",
-  "description": "Netatmo cameras (Welcome, Presence, Doorbell) — monitoring on/off",
+  "version": "0.5.0",
+  "description": "Netatmo cameras (Welcome, Presence, Doorbell) \u2014 monitoring on/off",
   "icon": "Camera",
   "repo": "mchacher/sowel-plugin-netatmo-security",
   "author": "mchacher",
   "sowelVersion": ">=0.10.0",
   "settings": [
-    { "key": "client_id", "label": "Client ID", "type": "text", "required": true, "placeholder": "From dev.netatmo.com" },
-    { "key": "client_secret", "label": "Client Secret", "type": "password", "required": true },
-    { "key": "refresh_token", "label": "Refresh Token", "type": "password", "required": true, "placeholder": "With camera scopes" },
-    { "key": "polling_interval", "label": "Polling interval (seconds)", "type": "number", "required": false, "defaultValue": "300", "placeholder": "Min 180, default 300" }
+    {
+      "key": "client_id",
+      "label": "Client ID",
+      "type": "text",
+      "required": true,
+      "placeholder": "From dev.netatmo.com"
+    },
+    {
+      "key": "client_secret",
+      "label": "Client Secret",
+      "type": "password",
+      "required": true
+    },
+    {
+      "key": "refresh_token",
+      "label": "Refresh Token",
+      "type": "password",
+      "required": true,
+      "placeholder": "With camera scopes"
+    },
+    {
+      "key": "polling_interval",
+      "label": "Polling interval (seconds)",
+      "type": "number",
+      "required": false,
+      "defaultValue": "300",
+      "placeholder": "Min 180, default 300"
+    }
   ]
 }
